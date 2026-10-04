@@ -1,0 +1,763 @@
+/*==============================================================
+  شطبتكم — تخصيصات فوق القالب الأساسي
+================================================================*/
+/* Palette vert / turquoise — overrides the template variables (style.css).
+   The template's variable names still say "blue"; they now hold the teal shades. */
+:root {
+  --primary-color: #0B3B3C;   /* headings, footer background */
+  --secondary-color: #46605F; /* body text */
+  --accent-color: #FFC857;    /* buttons, highlights */
+  --dark-blue: #0B8A8A;       /* main brand teal (links, coloured sections) */
+  --light-blue: #9FE8DF;      /* light highlights on dark backgrounds */
+  --lightest-blue: #E8F7F6;   /* tinted section backgrounds */
+  --gray-color3: #5E7574;
+  --brand-deep: #0B3B3C;
+  --brand-glow: #19C3B4;
+  --whatsapp-color: #25D366;
+  --success-color: #1a7f4b;
+  --error-color: #c0392b;
+}
+
+/* Coloured sections get a subtle teal gradient instead of a flat fill */
+.cs_blue_bg1 {
+  background: linear-gradient(135deg, var(--brand-deep) 0%, var(--dark-blue) 100%);
+}
+.cs_site_header.cs_style_1.cs_sticky_active,
+.cs_site_header.cs_style_1.cs_type_1 {
+  box-shadow: 0 1px 2px rgba(11, 59, 60, 0.12);
+}
+/* The PNG logo is still blue: tint it teal until a teal version is provided */
+.cs_site_logo {
+  filter: hue-rotate(-32deg) saturate(0.85) brightness(0.85);
+}
+
+/* Arabic: dedicated fonts, taller line-height; French keeps the template fonts */
+html[lang="ar"] {
+  --primary-font: "Cairo", "Tajawal", sans-serif;
+  --secondary-font: "Tajawal", "Cairo", sans-serif;
+}
+body {
+  background-color: var(--white-color);
+}
+html[lang="ar"] body {
+  line-height: 1.8em;
+}
+html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3,
+html[lang="ar"] h4, html[lang="ar"] h5, html[lang="ar"] h6 {
+  line-height: 1.45em;
+}
+/* Arabic text never looks good uppercased/letter-spaced */
+html[lang="ar"] .text-uppercase,
+html[lang="ar"] .text-capitalize {
+  text-transform: none !important;
+}
+
+/* Language switch button in the header */
+.cs_main_header_right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.cs_lang_switch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  height: 42px;
+  padding: 0 10px;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  font-weight: 700;
+  font-family: "Cairo", var(--primary-font);
+  transition: all 0.3s ease;
+}
+.cs_lang_switch:hover {
+  color: var(--primary-color);
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+.cs_site_header.cs_style_1 .cs_main_header_right .cs_btn_style_1 {
+  margin: 0;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/*------------- Header -------------*/
+.cs_site_logo {
+  display: block;
+  width: 150px;
+  height: auto;
+  border-radius: 8px;
+}
+@media (max-width: 575px) {
+  .cs_site_logo {
+    width: 120px;
+  }
+}
+.cs_site_header.cs_style_1 .cs_nav_list > li.active > a {
+  color: var(--accent-color);
+  font-weight: 700;
+}
+.cs_site_header.cs_style_1.cs_sticky_active .cs_nav_list > li.active > a,
+.cs_site_header.cs_style_1.cs_type_1 .cs_nav_list > li.active > a {
+  color: var(--dark-blue);
+}
+@media (max-width: 1199px) {
+  .cs_site_header.cs_style_1 .cs_nav .cs_nav_list a {
+    font-size: 18px;
+  }
+  .cs_site_header.cs_style_1 .cs_nav .cs_nav_list > li.active > a {
+    color: var(--dark-blue);
+  }
+}
+
+/*------------- Hero (home) -------------*/
+.cs_hero_modern {
+  padding: 150px 0 48px;
+  isolation: isolate;
+}
+.cs_hero_modern .container {
+  z-index: 1;
+}
+.cs_hero_glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 0;
+  pointer-events: none;
+}
+.cs_hero_glow_1 {
+  width: 520px;
+  height: 520px;
+  top: -160px;
+  inset-inline-end: -120px;
+  background: rgba(25, 195, 180, 0.45);
+}
+.cs_hero_glow_2 {
+  width: 420px;
+  height: 420px;
+  bottom: -200px;
+  inset-inline-start: -120px;
+  background: rgba(255, 200, 87, 0.18);
+}
+/* soft floating soap bubbles */
+.cs_hero_bubbles span {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.04) 60%);
+  animation: cs_bubble 9s ease-in-out infinite;
+  pointer-events: none;
+}
+.cs_hero_bubbles span:nth-child(1) { width: 26px; height: 26px; top: 22%; inset-inline-start: 8%; }
+.cs_hero_bubbles span:nth-child(2) { width: 14px; height: 14px; top: 62%; inset-inline-start: 44%; animation-delay: -2s; }
+.cs_hero_bubbles span:nth-child(3) { width: 40px; height: 40px; top: 14%; inset-inline-start: 50%; animation-delay: -4s; }
+.cs_hero_bubbles span:nth-child(4) { width: 18px; height: 18px; bottom: 16%; inset-inline-end: 6%; animation-delay: -6s; }
+.cs_hero_bubbles span:nth-child(5) { width: 10px; height: 10px; top: 40%; inset-inline-end: 42%; animation-delay: -1s; }
+@keyframes cs_bubble {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+}
+
+.cs_hero_grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 56px;
+}
+.cs_hero_pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--primary-font);
+  color: var(--white-color);
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(6px);
+}
+.cs_hero_pill i {
+  color: var(--accent-color);
+}
+.cs_hero_heading {
+  margin-bottom: 20px;
+  font-size: clamp(32px, 4.2vw, 56px);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--white-color);
+}
+html[lang="ar"] .cs_hero_heading {
+  line-height: 1.35;
+}
+.cs_hero_mark {
+  display: inline;
+  color: var(--accent-color);
+  padding-bottom: 6px;
+  /* brush-stroke underline that follows the text across line breaks */
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 12' preserveAspectRatio='none'%3E%3Cpath d='M2 9 C 60 2, 140 2, 298 7' stroke='%23FFC857' stroke-width='4' fill='none' stroke-linecap='round' opacity='.7'/%3E%3C/svg%3E") no-repeat left bottom / 100% 10px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.cs_hero_lead {
+  max-width: 560px;
+  margin-bottom: 32px;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.85);
+}
+.cs_hero_actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 36px;
+}
+.cs_hero_ghost_btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 26px;
+  border-radius: 32px;
+  font-weight: 600;
+  font-family: var(--primary-font);
+  color: var(--white-color);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  transition: all 0.3s ease;
+}
+.cs_hero_ghost_btn i {
+  font-size: 20px;
+}
+.cs_hero_ghost_btn:hover {
+  color: var(--primary-color);
+  background: var(--white-color);
+  border-color: var(--white-color);
+}
+.cs_hero_proof {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
+}
+.cs_hero_avatars {
+  display: flex;
+  flex: none;
+}
+.cs_hero_avatars img {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 3px solid var(--dark-blue);
+  object-fit: cover;
+}
+.cs_hero_avatars img + img {
+  margin-inline-start: -12px;
+}
+.cs_hero_stars {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--accent-color);
+  font-size: 13px;
+}
+.cs_hero_stars strong {
+  margin-inline-start: 6px;
+  color: var(--white-color);
+  font-size: 15px;
+}
+
+/* photo with rounded "blob" frame and floating info cards */
+.cs_hero_visual {
+  position: relative;
+  max-width: 500px;
+  justify-self: center;
+  width: 100%;
+}
+.cs_hero_ring {
+  position: absolute;
+  inset: -18px;
+  border-radius: 48% 52% 44% 56% / 55% 45% 55% 45%;
+  border: 2px dashed rgba(255, 255, 255, 0.28);
+  animation: cs_spin 40s linear infinite;
+}
+@keyframes cs_spin {
+  to { transform: rotate(360deg); }
+}
+.cs_hero_photo {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1 / 1.05;
+  border-radius: 48% 52% 44% 56% / 55% 45% 55% 45%;
+  border: 6px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 30px 60px rgba(4, 30, 31, 0.35);
+}
+.cs_hero_photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cs_hero_float {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px 12px 12px;
+  border-radius: 16px;
+  background: var(--white-color);
+  box-shadow: 0 16px 40px rgba(4, 30, 31, 0.22);
+  animation: cs_float 5s ease-in-out infinite;
+}
+[dir="rtl"] .cs_hero_float {
+  padding: 12px 12px 12px 18px;
+}
+.cs_hero_float strong {
+  display: block;
+  color: var(--primary-color);
+  font-family: var(--primary-font);
+  font-size: 18px;
+  line-height: 1.2;
+}
+.cs_hero_float span:not(.cs_hero_float_icon) {
+  font-size: 13px;
+  color: var(--gray-color3);
+}
+.cs_hero_float_icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  font-size: 20px;
+  color: var(--white-color);
+  background: var(--dark-blue);
+}
+.cs_hero_float_icon_accent {
+  color: var(--primary-color);
+  background: var(--accent-color);
+}
+.cs_hero_float_stat {
+  bottom: 12%;
+  inset-inline-start: -40px;
+}
+.cs_hero_float_team {
+  top: 8%;
+  inset-inline-end: -30px;
+  animation-delay: -2.5s;
+}
+@keyframes cs_float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.cs_hero_badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 56px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.cs_hero_badges li {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-family: var(--primary-font);
+  color: var(--white-color);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+.cs_hero_badges i {
+  color: var(--accent-color);
+}
+
+@media (max-width: 1199px) {
+  .cs_hero_float_stat { inset-inline-start: -10px; }
+  .cs_hero_float_team { inset-inline-end: -10px; }
+}
+@media (max-width: 991px) {
+  .cs_hero_modern {
+    padding: 110px 0 40px;
+    border-radius: 0;
+  }
+  .cs_hero_grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    text-align: center;
+  }
+  .cs_hero_lead {
+    margin-inline: auto;
+  }
+  .cs_hero_actions,
+  .cs_hero_proof {
+    justify-content: center;
+  }
+  .cs_hero_visual {
+    max-width: 420px;
+  }
+  .cs_hero_badges {
+    margin-top: 40px;
+  }
+}
+@media (max-width: 575px) {
+  .cs_hero_lead {
+    font-size: 16px;
+  }
+  .cs_hero_actions > * {
+    width: 100%;
+    justify-content: center;
+  }
+  .cs_hero_proof {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .cs_hero_stars {
+    justify-content: center;
+  }
+  .cs_hero_visual {
+    max-width: 300px;
+  }
+  .cs_hero_float {
+    padding: 8px 12px 8px 8px;
+    gap: 8px;
+  }
+  .cs_hero_float_icon {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+  .cs_hero_float strong {
+    font-size: 15px;
+  }
+  .cs_hero_float_stat { inset-inline-start: -16px; bottom: 4%; }
+  .cs_hero_float_team { inset-inline-end: -16px; top: 2%; }
+  .cs_hero_badges li {
+    width: 100%;
+    justify-content: center;
+    font-size: 14px;
+  }
+}
+
+/*------------- Services -------------*/
+.cs_card_style_1 .cs_card_thumbnail img {
+  aspect-ratio: 4 / 3.4;
+  object-fit: cover;
+  width: 100%;
+}
+.cs_card_style_1 .cs_card_link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  font-weight: 700;
+  color: var(--dark-blue);
+  font-family: var(--primary-font);
+}
+.cs_card_style_1 .cs_card_link i {
+  transition: transform 0.3s ease;
+}
+.cs_card_style_1 .cs_card_link:hover i {
+  transform: translateX(4px);
+}
+[dir="rtl"] .cs_card_style_1 .cs_card_link:hover i {
+  transform: translateX(-4px);
+}
+.cs_price_tag {
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 2px 12px;
+  border-radius: 32px;
+  font-size: 14px;
+  font-weight: 700;
+  background-color: var(--lightest-blue);
+  color: var(--dark-blue);
+}
+
+/* Service details */
+.cs_breadcrumb {
+  font-size: 14px;
+  color: var(--gray-color3);
+}
+.cs_breadcrumb a:hover {
+  color: var(--dark-blue);
+}
+.cs_service_details_banner {
+  overflow: hidden;
+  max-height: 480px;
+}
+.cs_service_details_banner img {
+  object-fit: cover;
+}
+.cs_service_desc h2 {
+  font-size: 26px;
+  margin-bottom: 14px;
+}
+.cs_service_desc p {
+  margin-bottom: 28px;
+}
+.cs_service_desc .cs_list_style_1 li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+.cs_service_contact {
+  position: sticky;
+  top: 110px;
+  padding: 28px;
+  border: 1px solid var(--gray-color2);
+  background-color: var(--gray-color1);
+}
+.cs_service_contact .cs_btn_style_1 + .cs_btn_style_1 {
+  margin-top: 12px;
+}
+.cs_btn_whatsapp {
+  color: var(--white-color) !important;
+  background-color: var(--whatsapp-color);
+}
+.cs_btn_whatsapp i {
+  margin-inline-end: 8px;
+}
+
+/* About values */
+.cs_value_card {
+  padding: 32px 28px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.cs_value_card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(11, 138, 138, 0.14);
+}
+.cs_value_icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 18px;
+  border-radius: 14px;
+  font-size: 24px;
+  color: var(--dark-blue);
+  background-color: var(--lightest-blue);
+}
+
+/*------------- Forms -------------*/
+.cs_contact_form_wrapper {
+  margin-left: 0;
+  margin-right: 0;
+  margin-inline-start: auto;
+  background-color: var(--white-color);
+}
+.cs_booking_wrapper {
+  width: min(100%, 880px);
+  margin: 0 auto;
+}
+.cs_contact_form_wrapper select.cs_form_field {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%230E1109' stroke-width='1.6' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+  background-color: var(--white-color);
+}
+.cs_contact_form_wrapper .cs_form_field.is-invalid {
+  border-color: var(--error-color);
+}
+.cs_contact_form_wrapper .cs_field_error {
+  display: block;
+  margin-top: 4px;
+  font-size: 14px;
+  color: var(--error-color);
+}
+.cs_required {
+  color: var(--error-color);
+}
+.cs_radio_cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+}
+.cs_radio_cards input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.cs_radio_cards label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 52px;
+  margin: 0 !important;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--gray-color2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.cs_radio_cards input:checked + label {
+  border-color: var(--dark-blue);
+  background-color: var(--lightest-blue);
+  color: var(--dark-blue);
+  font-weight: 700;
+}
+.cs_radio_cards input:focus-visible + label {
+  outline: 3px solid var(--accent-color);
+}
+.cs_form_result {
+  margin-top: 12px;
+  font-weight: 600;
+  font-family: var(--primary-font);
+}
+.cs_form_result:empty {
+  display: none;
+}
+.cs_form_result.is-success {
+  color: var(--success-color);
+}
+.cs_form_result.is-error {
+  color: var(--error-color);
+}
+[dir="rtl"] .cs_contact_form_wrapper select.cs_form_field {
+  background-position: left 16px center;
+  padding-right: 16px;
+  padding-left: 40px;
+}
+.cs_newsletter_form .cs_form_result {
+  position: absolute;
+  top: 100%;
+  inset-inline-start: 0;
+  margin-top: 8px;
+  font-size: 14px;
+}
+.cs_newsletter_form .cs_form_result.is-success,
+.cs_newsletter_form .cs_form_result.is-error {
+  color: var(--white-color);
+}
+.cs_btn_style_1[disabled] {
+  opacity: 0.7;
+  pointer-events: none;
+}
+/* Honeypot anti-spam field */
+.cs_hp {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/*------------- Contact info -------------*/
+.cs_contact_info_list li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.cs_contact_info_list .cs_contact_icon {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--white-color);
+  color: var(--dark-blue);
+}
+
+/*------------- Footer -------------*/
+.cs_footer_logo img {
+  width: 220px;
+  height: auto;
+}
+.cs_footer_contact {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 28px;
+  margin-top: 24px;
+  list-style: none;
+}
+.cs_footer_contact i {
+  margin-inline-end: 6px;
+  color: var(--accent-color);
+}
+.cs_footer_contact a:hover {
+  color: var(--accent-color);
+}
+.cs_social_btns_style_1 a i {
+  font-size: 16px;
+}
+
+/*------------- Floating WhatsApp -------------*/
+.cs_whatsapp_float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 998;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  font-size: 30px;
+  color: var(--white-color);
+  background-color: var(--whatsapp-color);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+  transition: transform 0.3s ease;
+}
+.cs_whatsapp_float:hover {
+  color: var(--white-color);
+  transform: scale(1.08);
+}
+.cs_whatsapp_float::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--whatsapp-color);
+  animation: cs_wa_pulse 2s ease-out infinite;
+}
+@keyframes cs_wa_pulse {
+  from { transform: scale(1); opacity: 0.8; }
+  to { transform: scale(1.6); opacity: 0; }
+}
+/* scroll-up button moves to the opposite side */
+.cs_scrollup {
+  right: auto !important;
+  left: 24px;
+}
+
+/*------------- Legal page -------------*/
+.cs_legal_content {
+  max-width: 860px;
+  margin: 0 auto;
+}
+.cs_legal_content h2 {
+  font-size: 24px;
+  margin: 32px 0 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

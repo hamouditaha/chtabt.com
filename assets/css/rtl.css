@@ -1,0 +1,98 @@
+/* RTL overrides for Arabic layout */
+html[dir="rtl"] body {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Nav spacing */
+@media (min-width: 1200px) {
+  html[dir="rtl"] .cs_site_header.cs_style_1 .cs_nav_list > li {
+    margin-left: 0;
+    margin-right: 48px;
+  }
+  html[dir="rtl"] .cs_site_header.cs_style_1 .cs_nav_list > li:first-child {
+    margin-right: 0;
+  }
+}
+html[dir="rtl"] .cs_site_header.cs_style_1 .cs_btn_style_1 {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Mobile menu: burger on the left, panel slides from the right */
+@media (max-width: 1199px) {
+  html[dir="rtl"] .cs_site_header.cs_style_1 .cs_menu_toggle {
+    right: auto;
+    left: 32px;
+  }
+  html[dir="rtl"] .cs_site_header.cs_style_1 .cs_nav .cs_nav_list_wrap {
+    left: auto;
+    right: -100vw;
+    padding: 80px 16px 24px 0;
+  }
+  html[dir="rtl"] .cs_site_header.cs_style_1 .cs_nav .cs_nav_list_wrap.active {
+    right: 0;
+  }
+}
+@media (max-width: 991px) {
+  html[dir="rtl"] .cs_site_header.cs_style_1 .cs_menu_toggle {
+    left: 18px;
+  }
+}
+
+/* Buttons hover shapes */
+html[dir="rtl"] .cs_btn_style_1::before {
+  left: auto;
+  right: 0;
+  border-radius: 0 32px 32px 0;
+  transform-origin: bottom right;
+}
+html[dir="rtl"] .cs_btn_style_1::after {
+  right: auto;
+  left: 0;
+  border-radius: 32px 0 0 32px;
+  transform-origin: top left;
+}
+
+/* Accordions icon position */
+html[dir="rtl"] .cs_accordian.cs_style_1 .cs_accordian_head {
+  padding: 24px 24px 24px 76px;
+}
+html[dir="rtl"] .cs_accordian.cs_style_1 .cs_accordian_head .cs_accordian_toggle {
+  right: auto;
+  left: 24px;
+}
+html[dir="rtl"] .cs_accordian.cs_style_1 .cs_accordian_body {
+  padding: 0 24px 24px 76px;
+}
+
+/* Newsletter send button on input */
+html[dir="rtl"] .cs_newsletter_style_1 .cs_newsletter_form button {
+  right: auto;
+  left: 20px;
+}
+html[dir="rtl"] .cs_newsletter_style_1 .cs_newsletter_form input {
+  padding-right: 24px;
+  padding-left: 90px;
+}
+
+/* Hero thumbnail position swap on large screens */
+@media (min-width: 992px) {
+  html[dir="rtl"] .cs_hero_style_1 .cs_hero_thumbnail {
+    right: auto;
+    left: 50px;
+  }
+}
+
+/* Service cards info box */
+html[dir="rtl"] .cs_card_style_1 .cs_card_info {
+  text-align: right;
+}
+
+/* Slider arrows point the right way in RTL */
+html[dir="rtl"] .slick-slider {
+  direction: ltr;
+}
+html[dir="rtl"] .slick-slide {
+  direction: rtl;
+}
